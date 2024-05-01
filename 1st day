@@ -1,0 +1,51 @@
+contact = {}
+
+def display_contact():
+  if contact:
+    print("name and number in contacts")
+    for key in contact:
+      print("{} \t {}".format(key, contact[key]))
+  else:
+    print("There are no contacts to display")
+def delete_contact():
+  name=input("Enter the contact to be deleted")
+  if name in contact:
+    del contact[name]
+    print(f"{name}is successfully deleted".format(contact))
+  else:
+   print("Contact not found") 
+
+while True:
+  choice = int(input(("choice 1:Add contact \n choice 2:Search contact \n choice 3:Display contact \n choice 4:Edit contact \n choice 5:Delete contact \n choice 6:EXIT \n Enter the choice: ")))
+
+  if choice == 1:
+    name = input('Enter the name to be added:')
+    number = input("Enter the number to be added:")
+    contact[name] = number
+    print("Contact {} added successfully".format(name))
+
+  elif choice == 2:
+    search_name = input('Enter the contact to which you want to search: ')
+    if search_name in contact:
+      print(search_name, "name and phone number", contact[search_name])
+    else:
+      print("The contact you serached is not in book")
+
+  elif choice == 3:
+    display_contact()
+
+  elif choice == 4:
+    edit_contact = input("Enter the name of the contct to be edited")
+    if edit_contact in contact:
+      number = input("Enter the phone number:")
+      print("The contact is updated")
+      contact[edit_contact] = number
+      display_contact()
+    else:
+      print("The contact u wish to edit is not updated")
+
+  elif choice == 5:
+    delete_contact()
+  elif choice == 6:
+    print("You chose to exit")
+    break
